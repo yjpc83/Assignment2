@@ -136,3 +136,10 @@ http get http://localhost/api/contacts/1/phones
 ```
 
 ### Phone API
+
+### Testing API after migration ###
+
+```bash
+http GET http://localhost/api/contacts/2/phones
+HTTP/1.1 200 OK
+

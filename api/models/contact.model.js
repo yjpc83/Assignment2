@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Contact = sequelize.define("contact", {
+    const Contact = sequelize.define("contacts", {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
@@ -8,6 +8,10 @@ module.exports = (sequelize, Sequelize) => {
         name: {
             type: Sequelize.STRING
         },
+        address: {
+            type: Sequelize.STRING,
+            allowNull: true
+        }
     });
 
     return Contact;
