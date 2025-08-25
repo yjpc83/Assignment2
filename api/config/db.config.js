@@ -1,3 +1,4 @@
+// This does not work with migration
 module.exports = {
     HOST: "db",
     USER: "postgres",
