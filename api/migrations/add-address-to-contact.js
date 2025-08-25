@@ -26,7 +26,7 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
     await queryInterface.removeColumn('contacts', 'address');
-    //await queryInterface.renameColumn('phones', 'phone_type', 'name');
-    //await queryInterface.renameColumn('phones', 'phone_number', 'number');
+    await queryInterface.renameColumn('phones', 'phone_type', 'name');
+    await queryInterface.renameColumn('phones', 'phone_number', 'number');
   }
 };
