@@ -30,6 +30,11 @@
     text-align: center;
 }
 
+.details {
+    text-align: left;
+    width: 100%;
+}
+
 .button {
     border: none;
     color: white;
