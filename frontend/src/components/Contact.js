@@ -35,15 +35,14 @@ function Contact(props) {
 
     return (
         <div key={contact.id} className='contact' onClick={(e) => setExpanded(!expanded)}>
-            <div className='title'>
-                {/* <h3>{contact.name}</h3> */}
-                {/* <button className='button red' onClick={doDelete}>Delete Contact</button> */}
-            </div>
+            { /* <div className='title'>
+                <h3>{contact.name}</h3>
+                <button className='button red' onClick={doDelete}>Delete Contact</button>
+            </div> */ }
 
             <div className='details'>
                 <strong>Name: </strong> {contact.name} <br />
-                <strong>Address: </strong> {contact.address} <br />
-                
+                <strong>Address: </strong> {contact.address} <br />      
             </div>
 
             <div>
