@@ -16,7 +16,8 @@ exports.create = (req, res) => {
     const company = {
         company_name: req.body.company_name,
         company_address: req.body.company_address,
-        contact_id: req.body.contactId,
+        // take care of difference between params and body
+        contact_id: parseInt(req.params.contactId),
     };
 
     // This executes write into the database using sql behind the scene?
@@ -46,12 +47,28 @@ exports.findAll = (req, res) => {
         });
 };
 
+exports.filterByContactId = (req, res) => {
+    Company.findAll({
+        where: {
+            contact_id: parseInt(req.params.contactId)
+        }
+    })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred"
+            });
+        });
+};
+
 // Update company
 exports.update = (req, res) => {
     const id = req.params.company_id;
 
-    Contacts.update(req.body, {
-        where: { cpmpany_id: id }
+    Company.update(req.body, {
+        where: { company_id: id }
     })
         .then(num => {
             if (num == 1) {
@@ -78,6 +95,17 @@ exports.delete = (req, res) => {
     Company.destroy({
         where: { company_id: id }
     })
+        .then(num => {
+            if (num == 1) {
+                res.status(200).send({
+                    message: "Company was deleted successfully!"
+                });
+            } else {
+                res.status(404).send({
+                    message: `Cannot delete Company with id=${id}!`
+                });
+            }
+        })
         .catch(err => {
             res.status(500).send({
                 message: "Could not delete Company with id=" + id

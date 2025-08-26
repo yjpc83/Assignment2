@@ -29,6 +29,10 @@ require("./routes/contacts.routes")(app);
 require("./routes/phones.routes")(app);
 require("./routes/stats.routes")(app);
 
+// Task 5 - Need to add this file to create the database when server restarts
+require("./routes/companies.routes")(app);
+
+
 // set port, listen for requests
 const PORT = 5000;
 app.listen(PORT, () => {
