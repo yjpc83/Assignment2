@@ -60,6 +60,19 @@
     background-color: #da190b;
 }
 
+.company-card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: left;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adjust the value for desired spacing */
+}
+
 .page {
     height: 100vh;
     max-height: 100vh;

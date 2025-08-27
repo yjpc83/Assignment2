@@ -8,8 +8,9 @@ function NewContact(props) {
 
     async function createContact(e) {
         e.preventDefault();
-        console.log(name);
-        console.log(address);
+        // For debug use:
+        // console.log(name);
+        // console.log(address);
         const response = await fetch('http://localhost/api/contacts', {
             method: 'POST',
             headers: {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';  // import useEffect
 import PhoneList from './PhoneList.js';
+import CompanyCard from './CompanyCard.js';
 
 function Contact(props) {
     const {contact, contacts, setContacts} = props;
@@ -42,16 +43,16 @@ function Contact(props) {
 
             <div className='details'>
                 <strong>Name: </strong> {contact.name} <br />
-                <strong>Address: </strong> {contact.address} <br />      
-            </div>
-
-            <div>
-                <button className='button red' onClick={doDelete}>Delete Contact</button>
+                <strong>Address: </strong> {contact.address} <br />  
+                <br /> 
+                <button className='button red' onClick={doDelete}>Delete Contact</button>   
             </div>
 
             <div style={expandStyle}>
                 <hr />
                 <PhoneList phones={phones} setPhones={setPhones} contact={contact} />
+                <hr />
+                <CompanyCard />
             </div>
         </div>
     );

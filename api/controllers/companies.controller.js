@@ -5,7 +5,6 @@ const db = require("../models");
 const Company = db.companies;
 
 // This was imported in all other controllers in this project but never used.
-// I'd like to use it to make a complex query
 const Op = db.Sequelize.Op;
 
 // Create company
