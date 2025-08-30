@@ -8,9 +8,10 @@ function Contact(props) {
     const [phones, setPhones] = useState([]);
 
     useEffect(() => {
+        // fetch phones of this contact
         fetch('http://localhost/api/contacts/' + contact.id + '/phones')
             .then(response => response.json())
-            .then(data => setPhones(data))
+            .then(data => setPhones(data)) // after this step, phones variable has a list of phones
             .catch((error) => {
                 console.error('Error:', error);
             });
@@ -52,7 +53,7 @@ function Contact(props) {
                 <hr />
                 <PhoneList phones={phones} setPhones={setPhones} contact={contact} />
                 <hr />
-                <CompanyCard />
+                <CompanyCard contact={contact} />
             </div>
         </div>
     );

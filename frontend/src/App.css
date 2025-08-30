@@ -53,6 +53,14 @@
 .green:hover {
     background-color: #46a049;
 }
+
+.green:disabled {
+    /* I asked AI to style the disabled button for me */
+    background-color: #cccccc;
+    color: #666666;
+    border: 1px solid #999999;
+    box-shadow: none;
+}
 .red {
     background-color: #f44336;
 }
@@ -65,6 +73,7 @@
     flex-direction: column;
     gap: 5px;
     align-items: left;
+    font-size: small;
 }
 
 .button-container {
