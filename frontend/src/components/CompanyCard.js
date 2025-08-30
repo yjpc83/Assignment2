@@ -1,4 +1,3 @@
-import { use } from 'react';
 import { useState, useEffect } from 'react';
 
 function CompanyCard(props) {
@@ -33,7 +32,7 @@ function CompanyCard(props) {
             .catch((error) => {
                 console.error('Error:', error);
             });
-    }, []);
+    }, [contact.id]);
 
     // Register changes whenever new values are received
     // If new values are empty, don't allow save
@@ -61,7 +60,7 @@ function CompanyCard(props) {
                 } else {
                     setIsDeleteDisabled(false);
                 };
-                console.log(isDeleteDisabled)
+                // console.log(isDeleteDisabled)
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -71,7 +70,7 @@ function CompanyCard(props) {
     async function doDelete(e) {
         e.preventDefault();
 
-        const res = await fetch('http://localhost/api/companies/' + company.company_id, {
+        await fetch('http://localhost/api/companies/' + company.company_id, {
             method: 'DELETE',
         }).catch((error) => {
             console.error('Error:', error);
@@ -84,7 +83,7 @@ function CompanyCard(props) {
 
         // If there is no data, then POST
         if (!company?.company_id) {
-            const res = await fetch('http://localhost/api/contacts/' + contact.id + '/companies/', {
+            await fetch('http://localhost/api/contacts/' + contact.id + '/companies/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -100,7 +99,7 @@ function CompanyCard(props) {
 
         } else {
             // If there is data, then PUT
-            const res = await fetch('http://localhost/api/companies/' + company.company_id, {
+            await fetch('http://localhost/api/companies/' + company.company_id, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

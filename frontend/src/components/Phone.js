@@ -2,7 +2,7 @@ function Phone(props) {
     const {contact, phone, phones, setPhones} = props;
 
     async function deletePhone() {
-        const response = await fetch('http://localhost/api/contacts/' + contact.id + '/phones/' + phone.id, {
+        await fetch('http://localhost/api/contacts/' + contact.id + '/phones/' + phone.id, {
             method: 'DELETE',
         });
 

@@ -15,7 +15,7 @@ function Contact(props) {
             .catch((error) => {
                 console.error('Error:', error);
             });
-    }, []);
+    }, [contact.id]);
 
     const expandStyle = {
         display: expanded ? 'block' : 'none'
@@ -24,7 +24,7 @@ function Contact(props) {
     async function doDelete(e) {
         e.stopPropagation();
 
-        const response = await fetch('http://localhost/api/contacts/' + contact.id, {
+        await fetch('http://localhost/api/contacts/' + contact.id, {
             method: 'DELETE',
         });
 
