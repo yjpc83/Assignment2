@@ -12,6 +12,8 @@ function CompanyCard(props) {
     const [new_company_address, setNewCompanyAddress] = useState('');
 
     const [isSaveDisabled, setIsSaveDisabled] = useState(true);
+    const [isDeleteDisabled, setIsDeleteDisabled] = useState(true);
+
 
 
     // initialise data for this component, runs only once
@@ -23,6 +25,10 @@ function CompanyCard(props) {
    
                 setNewCompanyName(data[0]?.company_name || '');
                 setNewCompanyAddress(data[0]?.company_address || '');
+
+                if (data[0]?.company_id) {
+                    setIsDeleteDisabled(false);
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -49,11 +55,29 @@ function CompanyCard(props) {
    
                 setNewCompanyName(data[0]?.company_name || '');
                 setNewCompanyAddress(data[0]?.company_address || '');
+
+                if (!data[0]?.company_id) {
+                    setIsDeleteDisabled(true);
+                } else {
+                    setIsDeleteDisabled(false);
+                };
+                console.log(isDeleteDisabled)
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
     }
+
+    async function doDelete(e) {
+        e.preventDefault();
+
+        const res = await fetch('http://localhost/api/companies/' + company.company_id, {
+            method: 'DELETE',
+        }).catch((error) => {
+            console.error('Error:', error);
+        });
+        confirmSuccess();
+    };
 
     async function processCompanyInfo(e) {
         e.preventDefault();
@@ -72,6 +96,7 @@ function CompanyCard(props) {
             });
 
             confirmSuccess();
+            //console.log("Posted")
 
         } else {
             // If there is data, then PUT
@@ -87,6 +112,7 @@ function CompanyCard(props) {
             });
 
             confirmSuccess();
+            //console.log("Updated")
         }
     }
 
@@ -99,7 +125,7 @@ function CompanyCard(props) {
             <input type='text' placeholder='Company Address' onChange={(e) => setNewCompanyAddress(e.target.value)} value={new_company_address} />
             <div className='button-container'>
                 <button className='button green' type='submit' disabled={isSaveDisabled}>Save</button>
-                <button className='button red'>Delete</button>
+                <button className='button red' disabled={isDeleteDisabled} onClick={doDelete}>Delete</button>
             </div>
 
         </form>

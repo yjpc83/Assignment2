@@ -68,6 +68,13 @@
     background-color: #da190b;
 }
 
+.button.red:disabled {
+    background-color: #f8d7da; /* A pale, washed-out red */
+    color: #842029;            /* A muted, dark red for text */
+    border: 1px solid#3f0505;     /* A matching pale border */
+    opacity: 0.75;             /* Make it slightly transparent */
+}
+
 .company-card {
     display: flex;
     flex-direction: column;
